@@ -94,6 +94,8 @@ def preprocess(data):
     """
     Full preprocessing pipeline
     """
+    # Remove ID column
+    data = data.drop(columns=["customerID"])
 
     # Fix TotalCharges type
     data["TotalCharges"] = pd.to_numeric(
@@ -152,9 +154,6 @@ def preprocess(data):
 if __name__ == "__main__":
 
     data = pd.read_csv("../data/raw/churn.csv")
-
-    # Remove ID column
-    data = data.drop(columns=["customerID"])
 
     X_train, X_val, X_test, y_train, y_val, y_test = preprocess(data)
 

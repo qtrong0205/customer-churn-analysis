@@ -108,7 +108,7 @@ def preprocess(data):
 
     # Separate features and target
     X = data.drop(columns=["Churn"])
-    y = data["Churn"]
+    y = data["Churn"].map({"No": 0, "Yes": 1})
 
     # Split dataset
     X_train, X_val, X_test, y_train, y_val, y_test = split_data(X, y)
